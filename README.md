@@ -4,7 +4,7 @@ A modern, research-oriented portfolio website for Arash Nikzad, built with Next.
 
 ## 🚀 Live Demo
 
-[Link to your GitHub Pages URL will go here]
+[https://a2l5t8.github.io/JulesGoogleLabTest/](https://a2l5t8.github.io/JulesGoogleLabTest/)
 
 ## ✨ Features
 
