@@ -1,13 +1,19 @@
 @import "tailwindcss";
 
-:root {
-  --background: #000000;
-  --foreground: #ffffff;
-}
-
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-brand-blue: #3b82f6;
+  --color-brand-purple: #8b5cf6;
+  --color-research-cyan: #06b6d4;
+  --color-technical-gray: #0f172a;
+}
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
 }
 
 body {
@@ -18,28 +24,99 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
+  letter-spacing: -0.025em;
 }
 
-@layer base {
-  * {
-    @apply border-white/10;
-  }
+.font-mono {
+  font-family: var(--font-mono);
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar - Scientific Aesthetic */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #020617;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 5px;
+  background: #1e293b;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: #334155;
+}
+
+/* Animation Utilities */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+@keyframes scan {
+  from { transform: translateY(0); }
+  to { transform: translateY(100vh); }
+}
+
+.animate-scan-slow {
+  animation: scan 10s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Technical Layout Utilities */
+@layer utilities {
+  .technical-border {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s;
+  }
+  .technical-border:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .glass-morphism {
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dossier-card {
+    position: relative;
+    padding: 2rem;
+    border-radius: 0.125rem;
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+  }
+
+  .dossier-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: rgba(59, 130, 246, 0.5);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: top;
+  }
+
+  .dossier-card:hover::before {
+    transform: scaleY(1);
+  }
 }

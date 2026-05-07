@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { portfolioData } from "@/data/portfolio";
 
@@ -13,10 +13,15 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: `${portfolioData.name} | ${portfolioData.role}`,
   description: portfolioData.hero.description,
-  keywords: ["AI Research", "Machine Learning", "Neuroscience", "Thousand Brains Theory", "Deep Learning", "Arash Nikzad"],
+  keywords: ["AI Research", "Machine Learning", "Neuroscience", "Thousand Brains Theory", "Deep Learning", "Arash Nikzad", "Research Engineering"],
   authors: [{ name: portfolioData.name }],
   openGraph: {
     title: `${portfolioData.name} | ${portfolioData.role}`,
@@ -31,9 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth dark">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-black font-sans`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-black font-sans text-slate-300`}
       >
         {children}
       </body>
